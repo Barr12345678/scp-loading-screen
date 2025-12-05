@@ -621,32 +621,31 @@
             color: var(--text-dim);
         }
 
-        /* ===== ALERT STRIPE ===== */
+        /* ===== GRADIENT BAR ===== */
         .alert-stripe {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: repeating-linear-gradient(
+            background: linear-gradient(
                 90deg,
-                var(--scp-purple) 0px,
-                var(--scp-purple) 20px,
-                transparent 20px,
-                transparent 40px,
-                var(--scp-blue) 40px,
-                var(--scp-blue) 60px,
-                transparent 60px,
-                transparent 80px
+                var(--scp-purple) 0%,
+                var(--scp-blue) 25%,
+                var(--scp-green) 50%,
+                var(--scp-blue) 75%,
+                var(--scp-purple) 100%
             );
-            background-size: 160px 100%;
-            animation: stripeMove 3s linear infinite;
+            background-size: 200% 100%;
+            animation: gradientFlow 4s ease-in-out infinite;
             z-index: 100;
+            box-shadow: 0 0 10px var(--scp-purple-glow), 0 0 20px var(--scp-blue-glow);
         }
 
-        @keyframes stripeMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 160px 0; }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* ===== CORNER DECORATIONS ===== */
@@ -762,13 +761,17 @@
                     <div class="scp-emblem">
                         <!-- SCP Foundation Logo SVG -->
                         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="3"/>
-                            <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="50" cy="50" r="8" fill="currentColor"/>
-                            <line x1="50" y1="5" x2="50" y2="25" stroke="currentColor" stroke-width="3"/>
-                            <line x1="50" y1="75" x2="50" y2="95" stroke="currentColor" stroke-width="3"/>
-                            <line x1="5" y1="50" x2="25" y2="50" stroke="currentColor" stroke-width="3"/>
-                            <line x1="75" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="3"/>
+                            <!-- Outer circle -->
+                            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="3"/>
+                            <!-- Top arrow: line going down, chevron at bottom pointing down -->
+                            <path d="M50,2 L50,40" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <path d="M40,30 L50,40 L60,30" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Bottom-left arrow: line going up-right, chevron pointing up-right -->
+                            <path d="M12,88 L38,62" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <path d="M38,72 L38,62 L28,62" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Bottom-right arrow: line going up-left, chevron pointing up-left -->
+                            <path d="M88,88 L62,62" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <path d="M62,72 L62,62 L72,62" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <div class="scp-title-group">
